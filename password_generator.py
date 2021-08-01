@@ -1,11 +1,28 @@
 import tkinter as tk
+from tkinter.font import Font
 import random
+import time
 
 root = tk.Tk()
 
 # Customise the size of the interface
 canvas = tk.Canvas(root, width=100, height=100)
 canvas.pack()
+
+
+
+bigFont = Font(
+    family="Arial",
+    size=42,
+    underline=1,
+    weight="bold",
+)
+
+#Creating title
+titleLabel = tk.Label(root, text="Password Generator/Checker", font=bigFont, justify="left",pady=20)
+titleLabel.pack()
+
+
 
 
 def generatePassword():
@@ -28,10 +45,10 @@ def checkPassword():
     password = entry.get()
     verdict = conditions(password)
     if verdict:
-        myLabel['text'] = "It's a good password!"
+        myLabel['text'] = f"Good password: {password}"
 
     else:
-        myLabel['text'] = "Bad password! Change it!"
+        myLabel['text'] = f"Bad password: {password}"
 
 
 def conditions(password):
